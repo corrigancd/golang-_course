@@ -5,8 +5,10 @@ import (
 	"math"
 )
 
+// variables can be declared at the top level of files
+const inflationRate = 6.5
+
 func main() {
-	const inflationRate = 6.5
 	years := 10.0
 	expectedReturnRate := 5.5
 
@@ -34,4 +36,28 @@ func main() {
 	// format and print directly to terminal
 	fmt.Printf("Future Value: %.1f\nFuture Value (adjusted for inflation): %.1f", futureValue, futreRealValue)
 
+	// You can print with multiple lines using backticks
+	fmt.Printf(`Future Value: %.1f
+	Future Value (adjusted for inflation): %.1f
+	
+	`, futureValue, futreRealValue)
+
+	// example of calling the declared function below
+	outputText(formattedFv)
+
+	// futureValue and futureRealValue returned from the function (you separate them with a comma)
+	funcFv, funcFrv := calculateFutureValues(investmentAmount, expectedReturnRate, years)
+}
+
+// Example of how to declare any function
+func outputText(text string) {
+	fmt.Println("Custom function: ")
+	fmt.Println(text)
+}
+
+// function returns two values: (futureValue, futureRealValue) (float64, float64)
+func calculateFutureValues(investmentAmount, expectedReturnRate, years float64) (fv float64, frv float64) { // specifying one float64 type at the end means that all of the variables before this will also be float64
+	fv = investmentAmount * math.Pow(1+expectedReturnRate/100, years)
+	frv = fv / math.Pow(1+inflationRate/100, years)
+	return fv, frv
 }
