@@ -92,7 +92,8 @@ func main() {
 
 	admin := user.NewAdmin("admin@example.com", "12345")
 	fmt.Println("From Constructor from another package!...")
-	admin.User.OutputUserDetails()
+	admin.OutputUserDetails() // anon means that we can access the embedded struct directly from the parent struct instead
+
 }
 
 func OutputUserDetailsSeparateFunction(u *userLocal) {
