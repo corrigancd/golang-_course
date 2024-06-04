@@ -2,9 +2,10 @@ package main
 
 import (
 	"errors"
-	"example.com/structs_and_custom_types/user"
 	"fmt"
 	"time"
+
+	"example.com/structs_and_custom_types/user"
 )
 
 type userLocal struct { // use lowercase here because we don't want to expoe it to outside of the package
@@ -81,7 +82,7 @@ func main() {
 	appUsersFromConstructor.outputUserDetails()
 
 	// Creating user from a package
-	var appUsersFromConstructorInAnotherPackage, err2 = user.NewUser(firstName, lastName, birthdate)
+	var appUsersFromConstructorInAnotherPackage, err2 = user.New(firstName, lastName, birthdate)
 	if err2 != nil {
 		fmt.Println("ERROR: ", err2)
 		return
@@ -89,6 +90,9 @@ func main() {
 	fmt.Println("From Constructor from another package!...")
 	appUsersFromConstructorInAnotherPackage.OutputUserDetails()
 
+	admin := user.NewAdmin("admin@example.com", "12345")
+	fmt.Println("From Constructor from another package!...")
+	admin.User.OutputUserDetails()
 }
 
 func OutputUserDetailsSeparateFunction(u *userLocal) {
