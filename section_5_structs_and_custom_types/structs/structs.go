@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"example.com/structs_and_custom_types/user"
+	"example.com/structs/user"
 )
 
 type userLocal struct { // use lowercase here because we don't want to expoe it to outside of the package
