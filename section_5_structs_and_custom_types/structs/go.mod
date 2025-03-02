@@ -1,3 +1,3 @@
 module example.com/structs
 
-go 1.21.8
+go 1.24.0
